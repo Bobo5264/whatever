@@ -1,14 +1,6 @@
-sprites.onCreated(SpriteKind.Enemy, function (sprite) {
-    tiles.placeOnRandomTile(sprite, sprites.castle.tilePath5)
-    sprite.follow(playerOne, 25)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    game.gameOver(false)
-})
-let playerOne: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.setBackgroundColor(7)
-playerOne = sprites.create(img`
+let mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -26,5 +18,5 @@ playerOne = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
-scene.cameraFollowSprite(playerOne)
-controller.moveSprite(playerOne, 100, 100)
+scene.cameraFollowSprite(mySprite)
+controller.moveSprite(mySprite, 100, 100)
