@@ -6,7 +6,7 @@ sprites.onCreated(SpriteKind.Enemy, function (sprite) {
     tiles.placeOnRandomTile(sprite, sprites.castle.tilePath5)
     sprite.follow(playerOne, 25)
 })
-scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.forestTiles10, function (sprite, location) {
     shopkeep1 = sprites.create(img`
         . . . . f f f f . . . . . 
         . . f f f f f f f f . . . 
@@ -59,6 +59,10 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sp
     pause(500)
     tiles.placeOnTile(playerOne, tiles.getTileLocation(4, 7))
     controller.moveSprite(playerOne, 100, 100)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.builtin.field1, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.placeOnTile(playerOne, tiles.getTileLocation(5, 13))
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     game.gameOver(false)
